@@ -272,5 +272,34 @@ namespace Tavis
 
             Assert.Equal("blue", (string)result);
         }
+
+        [Fact]
+        public void Sample2Author()
+        {
+            var sample = GetSample2();
+
+            var pointer = new JsonPointer("/books/1/author");
+
+            var result = pointer.Find(sample);
+
+            Assert.Equal("John Steinbeck", (string)result);
+        }
+
+
+        public JToken GetSample2()
+        {
+            return JToken.Parse(@"{
+    'books': [
+        {
+          'title' : 'The Great Gatsby',
+          'author' : 'F. Scott Fitzgerald'
+        },
+        {
+          'title' : 'The Grapes of Wrath',
+          'author' : 'John Steinbeck'
+        }
+    ]
+}");
+        }
     }
 }

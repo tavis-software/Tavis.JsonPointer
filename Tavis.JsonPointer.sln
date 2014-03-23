@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonPointerTests", "src\JsonPointerTests\JsonPointerTests.csproj", "{B8F18CCA-793C-41A9-8BDE-D51C662CE5C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonPointer", "src\JsonPointer\JsonPointer.csproj", "{397BC630-F74C-4172-852D-A679770F39F7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B8F18CCA-793C-41A9-8BDE-D51C662CE5C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8F18CCA-793C-41A9-8BDE-D51C662CE5C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8F18CCA-793C-41A9-8BDE-D51C662CE5C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8F18CCA-793C-41A9-8BDE-D51C662CE5C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{397BC630-F74C-4172-852D-A679770F39F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{397BC630-F74C-4172-852D-A679770F39F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{397BC630-F74C-4172-852D-A679770F39F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{397BC630-F74C-4172-852D-A679770F39F7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

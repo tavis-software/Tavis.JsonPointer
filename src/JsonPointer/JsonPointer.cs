@@ -13,9 +13,27 @@ namespace Tavis
             _Tokens = pointer.Split('/').Skip(1).Select(Decode).ToArray();
         }
 
+        private JsonPointer(string[] tokens)
+        {
+            _Tokens = tokens;
+        }
         private string Decode(string token)
         {
             return Uri.UnescapeDataString(token).Replace("~1", "/").Replace("~0", "~");
+        }
+
+        public bool IsNewPointer()
+        {
+            return _Tokens.Last() == "-";
+        }
+
+        public JsonPointer ParentPointer
+        {
+            get
+            {
+                if (_Tokens.Length == 0) return null;
+                return new JsonPointer(_Tokens.Take(_Tokens.Length-1).ToArray());
+            }
         }
 
         public JToken Find(JToken sample)
@@ -24,20 +42,36 @@ namespace Tavis
             {
                 return sample;
             }
-
-            var pointer = sample;
-            foreach (var token in _Tokens)
+            try
             {
-                if (pointer is JArray)
+                var pointer = sample;
+                foreach (var token in _Tokens)
                 {
-                    pointer = pointer[Convert.ToInt32(token)];
+                    if (pointer is JArray)
+                    {
+                        pointer = pointer[Convert.ToInt32(token)];
+                    }
+                    else
+                    {
+                        pointer = pointer[token];
+                        if (pointer == null)
+                        {
+                            throw new ArgumentException("Cannot find " + token);
+                        }
+
+                    }
                 }
-                else
-                {
-                    pointer = pointer[token];
-                }
+                return pointer;
             }
-            return pointer;
+            catch (Exception ex)
+            {
+                throw  new ArgumentException("Failed to dereference pointer",ex);
+            }
+        }
+
+        public override string ToString()
+        {
+            return "/" + String.Join("/", _Tokens);
         }
     }
 }

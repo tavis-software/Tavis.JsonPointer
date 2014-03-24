@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System;
+using Newtonsoft.Json.Linq;
 using Xunit;
 
 namespace Tavis
@@ -69,6 +70,56 @@ namespace Tavis
             Assert.Equal(sample["foo"][0], result);
         }
 
+        [Fact]
+        public void New_item_reference()
+        {
+            var sample = GetSample1();
+
+            var pointer = new JsonPointer("/foo/-");
+
+            Assert.True(pointer.IsNewPointer());
+        }
+
+        [Fact]
+        public void Not_New_item_reference()
+        {
+            var sample = GetSample1();
+
+            var pointer = new JsonPointer("/foo/0");
+
+            Assert.False(pointer.IsNewPointer());
+        }
+
+        [Fact]
+        public void Parent_pointer()
+        {
+            var sample = GetSample1();
+
+            var pointer = new JsonPointer("/foo/-");
+
+            Assert.Equal("/foo", pointer.ParentPointer.ToString());
+        }
+
+        [Fact]
+        public void Point_to_array_element_that_does_not_exist()
+        {
+            var sample = GetSample1();
+
+            var pointer = new JsonPointer("/foo/10");
+            var thrown = false;
+            JToken result;
+            try
+            {
+                result = pointer.Find(sample);
+            }
+            catch (ArgumentException)
+            {
+
+                thrown = true;
+            }
+
+            Assert.True(thrown);
+        }
         [Fact]
         public void PointToPropertyWithEmptyKey()
         {

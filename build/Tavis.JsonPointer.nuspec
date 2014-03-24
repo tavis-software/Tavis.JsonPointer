@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Tavis.JsonPointer</id>
+    <version>0.5.0-beta</version>
+    <authors>Darrel Miller</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Implementation of a RFC6901 Json Pointer </description>
+    <releaseNotes>Initial commit</releaseNotes>
+    <projectUrl>https://github.com/tavis-software/Tavis.JsonPointer</projectUrl>
+ 	<dependencies>
+		  <dependency id="Newtonsoft.Json" version="5.0.8" />
+	</dependencies>
+  </metadata>
+  <files>
+    <file src="..\src\JsonPointer\bin\Release\Tavis.JsonPointer.dll" target="lib\portable-wp71+sl4+netcore45+net4" />
+  </files>
+</package>

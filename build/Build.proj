@@ -18,7 +18,7 @@
   <Target Name="Package">
  
     <Exec WorkingDirectory="$(MSBuildProjectDirectory)" 
-          Command="c:\bin\nuget.exe pack $(MSBuildProjectDirectory)\Tavis.$(Project).nuspec" />
+          Command="nuget.exe pack $(MSBuildProjectDirectory)\Tavis.$(Project).nuspec" />
  
   </Target>
 </Project>
